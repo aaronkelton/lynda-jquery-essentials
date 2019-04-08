@@ -7,6 +7,12 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $("document").ready(function() {
+          // $("p[class]").css("border", "3px solid red");
+          // $("p[crazy-fifth-attr]").css("border", "3px solid red");
+          // $("p[id=para1]").css("border", "3px solid red");
+          // $("p#para1").css("border", "3px solid red");
+          // $("p[id^=para]").css("border", "3px solid red");
+          $("p[id^=para][lang*=n-u]").css("border", "3px solid red");
         });
     </script>
 </head>
@@ -26,9 +32,9 @@
         <div id="example">
             <p class="a">This is paragraph 1</p>
             <p id="para1">This is paragraph 2</p>
-            <p class="b">This is paragraph 3</p>
+            <p class="b" lang="en-nz">This is paragraph 3</p>
             <p id="para4" lang="en-us">This is paragraph 4</p>
-            <p id="para5" lang="en-gb">This is paragraph 5</p>
+            <p id="para5" lang="en-gb" crazy-fifth-attr="smorgasbord">This is paragraph 5</p>
         </div>
     </div>
 </body>
