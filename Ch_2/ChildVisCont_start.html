@@ -7,6 +7,22 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $("document").ready(function() {
+          // $("p:contains('3')").css("border", "3px solid red");
+          // $("p:contains(3)").css("border", "3px solid red");
+          // $("p").filter(':contains(3)').css("border", "3px solid red");
+          // $("body:contains('3')").css("border", "3px solid red");
+
+          // not a good demo since selecting <p> without parent filter does same thing.
+          // $("p").filter(':parent').css("border", "3px solid red");
+          // $("p").css("border", "3px solid red");
+          // $("i").filter(':parent').css("border", "3px solid red");
+
+          // $("div").filter(':has(p[class=a])').css("border", "3px solid red");
+
+          // $("div p:first-child").css("border", "3px solid red");
+          // $("div p:last-of-type").css("border", "3px solid red");
+          // $("div p:nth-child(2)").css("border", "3px solid red");
+          $("div p:nth-child(2n)").css("border", "3px solid red");
         });
     </script>
 </head>
@@ -17,6 +33,7 @@
         <p>These selectors are used to retrieve content that matches certain conditions, such as whether they contain certain
             content, whether they are visible/hidden, or whether they are in a certain position within their parent.</p>
         <ul id="list1">
+            <li class="a">These italics tags don't have content, i.e. no parent-ness:  <i></i>  <-- inspect me</li>
             <li class="a"><code>:contains('<i>text</i>')</code>: select elements that contain specific text</li>
             <li class="a"><code>:parent</code>: select elements have at least one child node (element or text)</li>
             <li class="a"><code>:has(<i>selector</i>)</code>: select elements that contain at least one element that matches the selector</li>
