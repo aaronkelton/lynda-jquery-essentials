@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $("document").ready(function () {
+            // alert($("#example").html());
             document.getElementById("create").addEventListener("click", function (evt) {
                 createContent();
             });
@@ -19,12 +20,16 @@
         });
 
         function createContent() {
+          $("#example").html("<p>Hello new HTML!</p>");
         }
 
         function changeContent() {
+          var newItem = $("<p>This is the newly created content!</p>");
+          $("#para1").html(newItem);
         }
 
         function changeAllTheContent() {
+          $("#example p").text("You are now under my control.");
         }
     </script>
 </head>
