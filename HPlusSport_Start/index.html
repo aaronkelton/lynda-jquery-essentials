@@ -10,6 +10,28 @@
       $("h2[data-type=mineralwater]").css("background-color", "blue");
       $("h2[data-type=vitamin]").css("background-color", "green");
       $("h2[data-type=proteinbar]").css("background-color", "indigo");
+
+      $("input[name=vitamins]:checkbox").change(function() {
+        if ($("input[name=vitamins]").is(":checked")) {
+          $('h2[data-type="vitamin"]').parent().show();
+        } else {
+          $('h2[data-type="vitamin"]').parent().hide();
+        }
+      });
+      $("input[name=water]:checkbox").change(function() {
+        if ($("input[name=water]").is(":checked")) {
+          $('h2[data-type="mineralwater"]').parent().show();
+        } else {
+          $('h2[data-type="mineralwater"]').parent().hide();
+        }
+      });
+      $("input[name=protein]:checkbox").change(function() {
+        if ($("input[name=protein]").is(":checked")) {
+          $('h2[data-type="proteinbar"]').parent().show();
+        } else {
+          $('h2[data-type="proteinbar"]').parent().hide();
+        }
+      });
     });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +76,15 @@
     <h2 class="headline">Products</h2>
     <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
   </div><!-- container -->
+  <div>
+    <span>Show: </span>
+    <input type="checkbox" id="vitamin-check" name="vitamins" checked>
+    <label for="vitamins">Vitamins</label>
+    <input type="checkbox" id="water-check" name="water" checked>
+    <label for="water">Mineral Water</label>
+    <input type="checkbox" id="protein-check" name="protein" checked>
+    <label for="protein">Protein Bars</label>
+  </div>
   <ul class="product-list">
     <li class="product-item" data-prod_id="V-A1037">
         <img class="product-image" src="images/products/vitamin-a.jpg" alt="Vitamin A - Product Photo">
