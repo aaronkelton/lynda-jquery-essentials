@@ -11,6 +11,9 @@
       $("h2[data-type=vitamin]").css("background-color", "green");
       $("h2[data-type=proteinbar]").css("background-color", "indigo");
 
+      // could have also done $(".product-item") to get all list items
+      // then use has() to narrow down those with desired data-type
+      // finally, you could have toggled css display property to show/hide
       $("input[name=vitamins]:checkbox").change(function() {
         if ($("input[name=vitamins]").is(":checked")) {
           $('h2[data-type="vitamin"]').parent().show();
