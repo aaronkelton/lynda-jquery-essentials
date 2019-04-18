@@ -7,7 +7,33 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $(function() {
+          // $("#evtTarget").on("mouseover mouseleave", function() {
+          //   $(this).toggleClass("highlighted");
+          // });
+          $("#evtTarget").on("mouseover mouseleave", highlight);
+          $("#evtTarget").on("click", function() {
+            // Lynda solution, but I decided to use 'this' instead of repeating the selector explicitly
+            // $(this).off("mouseover mouseleave", highlight);
+            // $(this).html("<p>Hover effect shut off.</p>");
+            // $(this).removeClass("highlighted");
+
+            // you can chain these things together and make it pretty!
+            $(this).off("mouseover mouseleave", highlight)
+                   .html("<p>Chaining html to off()</p>")
+                   .removeClass("highlighted");
+
+            // $(this).unbind("mouseover"); // my solution just using jQuery docs
+          });
+          $("#textEntry").on("keypress", function(evt) {
+            $("#keyPress").text(String.fromCharCode(evt.charCode));
+          });
         });
+
+        function highlight() {
+          // I guess 'this' inherits automatically from the jQuery selector
+          // console.log(this);
+          $(this).toggleClass("highlighted");
+        }
     </script>
     <style type='text/css'>
         .highlighted {
