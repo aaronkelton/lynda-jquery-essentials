@@ -7,7 +7,30 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $(function() {
+          // $("#evtTarget").hover(highlight, highlight);
+          $("#evtTarget").hover(highlight); // it now takes a single handler for both
+          $("#evtTarget").click(klick);
+          $("#evtTarget").dblclick(dblKlick);
+          $(window).resize(resyze);
+          $("#evtTarget").one("click", function() {
+            $(this).css({
+              borderWidth: "4px",
+              cursor: "pointer"
+            });
+          });
         });
+        function resyze() {
+          $("#evtTarget").html("Browser window resized.");
+        }
+        function klick() {
+          $("#evtTarget").html("Single click yo.");
+        }
+        function dblKlick() {
+          $("#evtTarget").html("Double the clicks bro.");
+        }
+        function highlight() {
+          $("#evtTarget").toggleClass("highlighted");
+        }
     </script>
     <style type='text/css'>
         .highlighted {
