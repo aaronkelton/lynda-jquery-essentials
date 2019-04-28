@@ -37,8 +37,8 @@
       });
 
       $("li.product-item").click(function() {
-        let productName = $(this).children("h2").text();
-        let prod_id = $(this).data("prod_id");
+        let productName = encodeURIComponent($(this).children("h2").text());
+        let prod_id = encodeURIComponent($(this).data("prod_id"));
         window.location = `product.html?prodName=${productName}&prodID=${prod_id}`
       });
     });

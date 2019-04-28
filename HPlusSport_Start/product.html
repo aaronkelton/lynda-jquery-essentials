@@ -10,7 +10,7 @@
     $(document).ready(function(){
       // let params = (new URL(document.location)).searchParams; // from MDN
       let params = new URLSearchParams(window.location.search); // from StackOverflow
-      let productName = params.get("prodName");
+      let productName = decodeURIComponent(params.get("prodName"));
       $("#productName").text(productName);
     });
   </script>
