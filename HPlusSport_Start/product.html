@@ -5,6 +5,15 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../jquery-3.0.0.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // let params = (new URL(document.location)).searchParams; // from MDN
+      let params = new URLSearchParams(window.location.search); // from StackOverflow
+      let productName = params.get("prodName");
+      $("#productName").text(productName);
+    });
+  </script>
 </head>
 <body>
 

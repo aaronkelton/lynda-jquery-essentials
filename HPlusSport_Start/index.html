@@ -35,6 +35,12 @@
           $('h2[data-type="proteinbar"]').parent().hide();
         }
       });
+
+      $("li.product-item").click(function() {
+        let productName = $(this).children("h2").text();
+        let prod_id = $(this).data("prod_id");
+        window.location = `product.html?prodName=${productName}&prodID=${prod_id}`
+      });
     });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
