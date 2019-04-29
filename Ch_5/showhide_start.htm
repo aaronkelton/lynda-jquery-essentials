@@ -8,10 +8,15 @@
     <script type="text/javascript">
         $(function() {
             $("#show").click(function() {
+              $("#theDiv").show("fast");
             });
             $("#hide").click(function() {
+              $("#theDiv").hide(1000);
             });
             $("#toggle").click(function() {
+              $("#theDiv").toggle("slow", function() {
+                $(this).text("Animation complete");
+              });
             });
         });
     </script>
@@ -20,7 +25,7 @@
         span {
             font-size: 16pt;
         }
-        
+
         button {
             margin: 5pt 5pt 0 0;
         }
