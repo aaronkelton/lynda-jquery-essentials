@@ -8,10 +8,13 @@
     <script type="text/javascript">
         $(function() {
             $("#slideup").click(function() {
+              $("#theDiv").slideUp();
             });
             $("#slidedown").click(function() {
+              $("#theDiv").slideDown();
             });
             $("#toggle").click(function() {
+              $("#theDiv").slideToggle();
             });
         });
     </script>
@@ -25,12 +28,12 @@
             border: 1px solid gray;
             cursor: pointer;
         }
-        
+
         p,
         span {
             font-size: 16pt;
         }
-        
+
         button {
             margin: 5pt 5pt 0 0;
         }
