@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8"/>
     <title>The Ajax Helper Functions</title>
     <style>
         #ajaxContent {
@@ -16,8 +17,23 @@
         $("document").ready(function() {
             getData();
         });
-        
+
         function getData() {
+          /*
+            Lynda instructor doesn't show the "text" dataType argument
+            and it doesn't work as a result.
+            Also, order matters for this function signature
+          */
+          // $.get("testdata.txt", successFn, "text");
+
+          // the PlainObject approach is order-agnostic
+          // $.get({
+          //   dataType: "text",
+          //   url: "testdata.txt",
+          //   success: successFn
+          // });
+
+          $("#ajaxContent").load("testdata.html #p2");
         }
 
         function successFn(result) {
