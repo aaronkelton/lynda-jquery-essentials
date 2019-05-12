@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8"/>
     <title>Using AJAX Global Events</title>
     <style>
         #ajaxContent {
@@ -13,14 +14,32 @@
 
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
-        $("document").ready(function() {
-            getData();
+        $(document).ready(function() {
+          $(document).ajaxStart(function() {
+            console.log("AJAX Starting");
+          });
+          $(document).ajaxStop(function() {
+            console.log("AJAX request ended.");
+          });
+          $(document).ajaxSend(function(evt, jqXHR, options) {
+            console.log("Send comes after Start. About to send request for data.");
+          });
+          $(document).ajaxComplete(function(evt, jqXHR, options) {
+            console.log("That's all she wrote.");
+          });
+          $(document).ajaxError(function(evt, jqXHR, settings, err) {
+            console.log("Hmm.. something went wrong: " + jqXHR.responseText);
+          });
+          $(document).ajaxSuccess(function(evt, jqXHR, options) {
+            console.log("LGTM!");
+          });
+          getData();
         });
-      
+
         function getData() {
-            $.get("testdata.txt", successFn);
+            $.get("testdata2.txt", successFn, "text");
         }
-        
+
         function successFn(result) {
             console.log("Setting result");
             $("#ajaxContent").append(result);
