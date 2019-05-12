@@ -14,19 +14,43 @@
     <script type="text/javascript" src="../jquery-3.0.0.js"></script>
     <script type="text/javascript">
         $("document").ready(function() {
-            getXMLData();
-            //getJSONData();
+            // getXMLData();
+            getJSONData();
         });
-      
+
         function getJSONData() {
             var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-            
+            $.getJSON(flickrAPI, {
+              tags: "space needle",
+              tagmode: "any",
+              format: "json"
+            }, successFn);
         }
 
         function getXMLData() {
+          /*
+            It isn't necessary in the case of XML to specify the dataType
+            because XML is a default. Only for non-XML!
+          */
+          $.get("testxmldata.xml", function(result) {
+            var title = result.getElementsByTagName("title")[0];
+            var name = result.getElementsByTagName("name")[0];
+            var val = title.firstChild.nodeValue + " by " + name.firstChild.nodeValue;
+            $("#ajaxContent").append(val);
+          }, "xml");
         }
 
         function successFn(result) {
+          // how does result get into the function via 'item'?
+          // they are linked via the $.each method. "Just works" as they say
+          $.each(result.items, function(i, item) {
+            $("<img>").attr("src", item.media.m)
+            .appendTo("#ajaxContent");
+            if (i === 4) {
+              // break from $.each() after 5th element
+              return false
+            }
+          });
         }
 
         function errorFn(xhr, status, strErr) {
