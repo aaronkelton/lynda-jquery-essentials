@@ -11,7 +11,20 @@
       // let params = (new URL(document.location)).searchParams; // from MDN
       let params = new URLSearchParams(window.location.search); // from StackOverflow
       let productName = decodeURIComponent(params.get("prodName"));
+      let productId = decodeURIComponent(params.get("prodID"));
       $("#productName").text(productName);
+
+      $.get("product-data.json", successFn, "json");
+
+      function successFn(result) {
+        result.products.forEach(function(el) {
+          if (el.prod_id == productId) {
+            $("#productStock").append(el.in_stock);
+            $("#productPrice").append(el.retail_price);
+            $("#productDesc").append(el.description);
+          }
+        });
+      }
     });
   </script>
 </head>
